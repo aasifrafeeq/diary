@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ content.title }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ content.title }}</h1>
+
+    <h6 style="font-family: 'Courier New', Courier, monospace;">ENTRY MADE ON : {{ content.date }}</h6>
+    <p >{{ content.content }}</p>
+    <a href="{{ url_for('index') }}">Go back home</a>
+{% endblock %}

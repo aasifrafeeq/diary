@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sucess
+{% endblock %}
+
+{% block body %}
+   {{  message }}
+   <a href="{{ url_for('index') }}">return to home</a>
+{% endblock %}

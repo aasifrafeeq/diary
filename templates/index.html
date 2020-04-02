@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MY F-UP STORY
+{% endblock %}
+
+{% block body %}
+    <h1>View an entry</h1>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+     <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+        {% for entry in entrys %}  
+
+      <li class="nav-item">
+        <a class="nav-link" href="/entrys/{{ entry.title }}">{{ entry.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+   <br>
+    <form action="{{ url_for('entry') }}" method="post">
+
+        <div class="form-group">
+            <select class="form-control" name="entry_id">
+                {% for entry in entrys %}
+                    <option value="{{ entry.id }}">{{ entry.title }} </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="openentry">
+        </div>
+    </form>
+    <h1>Add a new entry</h1>
+    <form action="{{ url_for('add') }}" method="post">
+        
+        <div class="form-group">
+            Title : <input type="text" placeholder="enter a title" name="title" ><br>
+            The story :<input type="text" name="content" size="200%" > <br>
+            <button style="border-color: burlywood;">Submit</button>
+        </div>
+        </form>    
+  
+{% endblock %}
